@@ -6,11 +6,11 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@Tag("regression")
+@Tag("sanity")
 @ExtendWith(ReporterTestException.class)
-public class MyTests {
+public class MySecondTests {
 
-    private static final Logger logger = LogManager.getLogger(MyTests.class);
+    private static final Logger logger = LogManager.getLogger(MySecondTests.class);
 //    private static final Calculator calculator = new Calculator();
 
 //    public static void main(String[] args) {
@@ -35,9 +35,9 @@ public class MyTests {
     @BeforeAll
     public static void beforeAllTests() {
         logger.info("Starting my test suite");
-        a = 2;
-        b = 3;
-        c = 4;
+        a = 20;
+        b = 30;
+        c = 40;
     }
 
     @AfterAll
@@ -45,6 +45,8 @@ public class MyTests {
         logger.info("Ending my test suite");
     }
 
+    @Tag("regression")
+    @Tag("security")
     @Test
     public void testSum() {
 
