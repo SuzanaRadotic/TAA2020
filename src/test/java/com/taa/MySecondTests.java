@@ -1,10 +1,17 @@
 package com.taa;
 
+import com.taa2020.BasicCalculator;
 import com.taa2020.Calculator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Tag("sanity")
 @ExtendWith(ReporterTestException.class)
@@ -57,7 +64,8 @@ public class MySecondTests {
         int sum = calculator.add2(++a, b++);
 
         // THEN - expected result
-        logger.info(sum);
+        // logger.info(sum);
+        assertThat("Sum of numbers failed", sum, is(50));  // assertion from hamcrest
     }
 
     @Test
@@ -70,7 +78,24 @@ public class MySecondTests {
         int m = calculator.multiply(a, b, c);
 
         // THEN
-        logger.info(m);
+        //logger.info(m);
+        assertEquals(24000, m);  // JUnit assertion - if this fails, the second one is not checked
+        assertTrue(m == 24000);  // JUnit assertion
+    }
+
+    @Test
+    public void testDivide() {
+
+        // GIVEN
+        BasicCalculator bc = new BasicCalculator();
+
+        // WHEN
+        double d = bc.divide(20, 6);
+
+        // THEN
+        assertThat(d, closeTo(3.3, 0.04)); // second argument is tolerance
+        // method allows values between 3.32 and 3.34
+        // it will fail for delta = 0.03
     }
 
 }

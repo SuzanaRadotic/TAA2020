@@ -35,9 +35,9 @@ public class MySecondIT {
     @BeforeAll
     public static void beforeAllTests() {
         logger.info("Starting my test suite");
-        a = 24;
-        b = 32;
-        c = 47;
+        a = 25;
+        b = 35;
+        c = 45;
     }
 
     @AfterAll
