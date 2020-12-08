@@ -65,7 +65,7 @@ public class MySecondTests {
 
         // THEN - expected result
         // logger.info(sum);
-        assertThat("Sum of numbers failed", sum, is(50));  // assertion from hamcrest
+        assertThat("Sum of numbers failed", sum, is(51));  // assertion from hamcrest
     }
 
     @Test
